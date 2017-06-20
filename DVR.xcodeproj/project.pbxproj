@@ -58,6 +58,9 @@
 		3690A0A21B33AA9E00731222 /* SessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3647AFCB1B33689000EF10D4 /* SessionTests.swift */; };
 		36BDDB891B6716AB00878665 /* json-example.json in Resources */ = {isa = PBXBuildFile; fileRef = 36BDDB881B6716AB00878665 /* json-example.json */; };
 		36BDDB8A1B6716AB00878665 /* json-example.json in Resources */ = {isa = PBXBuildFile; fileRef = 36BDDB881B6716AB00878665 /* json-example.json */; };
+		429A58E61EF866690069549B /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429A58E51EF866690069549B /* Error.swift */; };
+		429A58E71EF866690069549B /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429A58E51EF866690069549B /* Error.swift */; };
+		429A58E81EF866690069549B /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429A58E51EF866690069549B /* Error.swift */; };
 		B19D62651CB1860400E16D11 /* SessionUploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19D62641CB1860400E16D11 /* SessionUploadTask.swift */; };
 		B19D62681CB19AA000E16D11 /* testfile.txt in Resources */ = {isa = PBXBuildFile; fileRef = B19D62661CB18EDB00E16D11 /* testfile.txt */; };
 		B19D62691CB19AA200E16D11 /* testfile.txt in Resources */ = {isa = PBXBuildFile; fileRef = B19D62661CB18EDB00E16D11 /* testfile.txt */; };
@@ -116,6 +119,7 @@
 		3690A07B1B33AA3B00731222 /* DVR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DVR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3690A0841B33AA3C00731222 /* DVRTests-OSX.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DVRTests-OSX.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36BDDB881B6716AB00878665 /* json-example.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "json-example.json"; sourceTree = "<group>"; };
+		429A58E51EF866690069549B /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		B19D62641CB1860400E16D11 /* SessionUploadTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionUploadTask.swift; sourceTree = "<group>"; };
 		B19D62661CB18EDB00E16D11 /* testfile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testfile.txt; sourceTree = "<group>"; };
 		B19D626D1CB1A0DD00E16D11 /* SessionUploadTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionUploadTests.swift; sourceTree = "<group>"; };
@@ -202,6 +206,7 @@
 				360F5F721B5C907A001AADD1 /* SessionDownloadTask.swift */,
 				B19D62641CB1860400E16D11 /* SessionUploadTask.swift */,
 				3647AFB51B335E4A00EF10D4 /* Cassette.swift */,
+				429A58E51EF866690069549B /* Error.swift */,
 				3647AFB61B335E4A00EF10D4 /* Interaction.swift */,
 				3647AFB71B335E4A00EF10D4 /* URLRequest.swift */,
 				3647AFBF1B33602A00EF10D4 /* URLResponse.swift */,
@@ -519,6 +524,7 @@
 				2104F54E1DC658A60039CA14 /* HTTPURLResponse.swift in Sources */,
 				2104F5491DC658A60039CA14 /* SessionUploadTask.swift in Sources */,
 				2104F54D1DC658A60039CA14 /* URLResponse.swift in Sources */,
+				429A58E81EF866690069549B /* Error.swift in Sources */,
 				2104F5471DC658A60039CA14 /* SessionDataTask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -544,6 +550,7 @@
 				3647AFBC1B335E4A00EF10D4 /* URLRequest.swift in Sources */,
 				3647AFBB1B335E4A00EF10D4 /* Interaction.swift in Sources */,
 				3647AFBA1B335E4A00EF10D4 /* Cassette.swift in Sources */,
+				429A58E61EF866690069549B /* Error.swift in Sources */,
 				3647AFC21B3363C400EF10D4 /* HTTPURLResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -569,6 +576,7 @@
 				3690A0931B33AA9400731222 /* Session.swift in Sources */,
 				3690A0941B33AA9400731222 /* SessionDataTask.swift in Sources */,
 				3690A0971B33AA9400731222 /* URLRequest.swift in Sources */,
+				429A58E71EF866690069549B /* Error.swift in Sources */,
 				3690A0991B33AA9400731222 /* HTTPURLResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -5,16 +5,17 @@ struct Interaction {
     // MARK: - Properties
 
     let request: URLRequest
-    let response: Foundation.URLResponse
+    let response: Foundation.URLResponse?
+    let error: Error?
     let responseData: Data?
     let recordedAt: Date
 
-
     // MARK: - Initializers
 
-    init(request: URLRequest, response: Foundation.URLResponse, responseData: Data? = nil, recordedAt: Date = Date()) {
+    init(request: URLRequest, response: Foundation.URLResponse? = nil, error: Error? = nil, responseData: Data? = nil, recordedAt: Date = Date()) {
         self.request = request
         self.response = response
+        self.error = error
         self.responseData = responseData
         self.recordedAt = recordedAt
     }
@@ -81,23 +82,38 @@ extension Interaction {
             "recorded_at": recordedAt.timeIntervalSince1970
         ]
 
-        var response = self.response.dictionary
-        if let data = responseData, let body = Interaction.encodeBody(data, headers: response["headers"] as? [String: String]) {
-            response["body"] = body
+        if var response = self.response?.dictionary {
+            if let data = responseData, let body = Interaction.encodeBody(data, headers: response["headers"] as? [String: String]) {
+                response["body"] = body
+            }
+            dictionary["response"] = response
         }
-        dictionary["response"] = response
+
+        if let error = self.error as NSError? {
+            dictionary["error"] = error.dictionary
+        }
 
         return dictionary
     }
 
     init?(dictionary: [String: Any]) {
         guard let request = dictionary["request"] as? [String: Any],
-            let response = dictionary["response"] as? [String: Any],
             let recordedAt = dictionary["recorded_at"] as? TimeInterval else { return nil }
 
         self.request = NSMutableURLRequest(dictionary: request) as URLRequest
-        self.response = HTTPURLResponse(dictionary: response)
+        if let response = dictionary["response"] as? [String: Any] {
+            self.response = HTTPURLResponse(dictionary: response)
+            self.responseData = Interaction.dencodeBody(response["body"], headers: response["headers"] as? [String: String])
+        } else {
+            self.response = nil
+            self.responseData = nil
+        }
+
+        if let error = dictionary["error"] as? [String: Any] {
+            self.error = NSError(dictionary: error)
+        } else {
+            self.error = nil
+        }
         self.recordedAt = Date(timeIntervalSince1970: recordedAt)
-        self.responseData = Interaction.dencodeBody(response["body"], headers: response["headers"] as? [String: String])
     }
 }

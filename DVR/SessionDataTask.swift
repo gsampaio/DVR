@@ -44,7 +44,7 @@ final class SessionDataTask: URLSessionDataTask {
             // Forward completion
             if let completion = completion {
                 queue.async {
-                    completion(interaction.responseData, interaction.response, nil)
+                    completion(interaction.responseData, interaction.response, interaction.error as NSError?)
                 }
             }
             session.finishTask(self, interaction: interaction, playback: true)
@@ -62,22 +62,17 @@ final class SessionDataTask: URLSessionDataTask {
 
         let task = session.backingSession.dataTask(with: request, completionHandler: { [weak self] data, response, error in
 
-            //Ensure we have a response
-            guard let response = response else {
-                fatalError("[DVR] Failed to record because the task returned a nil response.")
-            }
-
             guard let this = self else {
                 fatalError("[DVR] Something has gone horribly wrong.")
             }
 
             // Still call the completion block so the user can chain requests while recording.
             this.queue.async {
-                this.completion?(data, response, nil)
+                this.completion?(data, response, error as NSError?)
             }
 
             // Create interaction
-            this.interaction = Interaction(request: this.request, response: response, responseData: data)
+            this.interaction = Interaction(request: this.request, response: response, error: error, responseData: data)
             this.session.finishTask(this, interaction: this.interaction!, playback: false)
         })
         task.resume()
